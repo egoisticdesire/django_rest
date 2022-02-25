@@ -6,6 +6,7 @@ class AuthorModelSerializer(HyperlinkedModelSerializer):
 	class Meta:
 		model = Author
 		fields = (
+			'uid',
 			'username',
 			'firstname',
 			'lastname',
