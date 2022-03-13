@@ -38,7 +38,9 @@ INSTALLED_APPS = [
 	'rest_framework',
 	'corsheaders',
 
-	'authors',
+	# todo_apps
+	'users_app',
+	'todolist_app',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+	'DEFAULT_RENDERER_CLASSES': [
+		'rest_framework.renderers.JSONRenderer',
+		'rest_framework.renderers.BrowsableAPIRenderer',
+	]
+}
+
 CORS_ALLOWED_ORIGINS = [
-   "http://localhost:3000",
+	"http://localhost:3000",
 ]
