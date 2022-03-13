@@ -1,9 +1,9 @@
-from authors.models import Author
+from users_app.models import User
 from django.core.management.base import BaseCommand
 
 import json, os
 
-JSON_PATH = 'authors/jsons'
+JSON_PATH = 'users_app/jsons'
 
 
 def load_from_json(file_name):
@@ -13,8 +13,8 @@ def load_from_json(file_name):
 
 class Command(BaseCommand):
 	def handle(self, *args, **options):
-		authors = load_from_json('authors')
-		Author.objects.all().delete()
-		for author in authors:
-			new_author = Author(**author)
-			new_author.save()
+		users = load_from_json('users')
+		User.objects.all().delete()
+		for user in users:
+			new_user = User(**user)
+			new_user.save()
