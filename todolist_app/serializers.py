@@ -17,8 +17,10 @@ class ToDoModelSerializer(HyperlinkedModelSerializer):
 		model = ToDo
 		fields = (
 			'project',
+			'title',
 			'body',
 			'created_at',
 			'updated_at',
+			'user',
 			'is_active',
 		)
