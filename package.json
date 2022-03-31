@@ -1,10 +1,33 @@
 {
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "antd": "^4.19.3",
     "axios": "^0.26.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "create-react-app": "^5.0.0",
-    "framer-motion": "^6.2.8"
-  }
+    "framer-motion": "^6.2.8",
+    "react-router-dom": "^6.2.2"
+  },
+  "name": "django_rest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egoisticdesire/django_rest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egoisticdesire/django_rest/issues"
+  },
+  "homepage": "https://github.com/egoisticdesire/django_rest#readme",
+  "description": ""
 }
