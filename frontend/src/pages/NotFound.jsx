@@ -1,14 +1,18 @@
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React from "react";
-import {BackBtn} from "../components/BackBtn";
+import {Button, Result} from "antd";
+import {HomeOutlined} from "@ant-design/icons";
 
 const NotFoundPage = () => {
+    const navigate = useNavigate();
     return (
         <>
-            <BackBtn/>
-            <div>
-                This page doesn't exist. Go <Link to='/'>Home</Link>.
-            </div>
+            <Result
+                status="404"
+                title="404"
+                subTitle="Sorry, the page you visited does not exist."
+                extra={<Button type="ghost" onClick={() => navigate('/')} icon={<HomeOutlined/>}>На главную</Button>}
+            />
         </>
     )
 }
