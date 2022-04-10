@@ -4,7 +4,7 @@ from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
 from .models import User
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserShortModelSerializer
 
 
 class UserCustomViewSet(mixins.ListModelMixin,
@@ -15,6 +15,11 @@ class UserCustomViewSet(mixins.ListModelMixin,
 	serializer_class = UserModelSerializer
 	renderer_classes = (JSONRenderer, BrowsableAPIRenderer)
 	# authentication_classes = (JWTAuthentication,)
+
+	def get_serializer_class(self):
+		if self.request.version == 'short':
+			return UserShortModelSerializer
+		return UserModelSerializer
 
 
 class UserModelViewSet(ModelViewSet):
