@@ -5,15 +5,13 @@ from .models import Project, ToDo
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
-	users = UserModelSerializer
-
 	class Meta:
 		model = Project
 		fields = (
-			'title',
-			'link',
-			'users',
-		)
+				'title',
+				'link',
+				'users',
+				)
 
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
@@ -22,11 +20,23 @@ class ToDoModelSerializer(HyperlinkedModelSerializer):
 	class Meta:
 		model = ToDo
 		fields = (
-			'project',
-			'title',
-			'body',
-			'created_at',
-			'updated_at',
-			'user',
-			'is_active',
-		)
+				'project',
+				'title',
+				'body',
+				'created_at',
+				'updated_at',
+				'user',
+				'is_active',
+				)
+
+
+class ProjectModelSerializerBase(HyperlinkedModelSerializer):
+	class Meta:
+		model = Project
+		fields = '__all__'
+
+
+class ToDoModelSerializerBase(HyperlinkedModelSerializer):
+	class Meta:
+		model = ToDo
+		fields = '__all__'

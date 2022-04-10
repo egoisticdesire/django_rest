@@ -20,28 +20,28 @@ class User(models.Model):
 		return self.username
 
 	uid = models.UUIDField(
-		primary_key=True,
-		verbose_name='ID',
-		default=uuid4,
-		unique=True,
-	)
+			primary_key=True,
+			verbose_name='ID',
+			default=uuid4,
+			unique=True,
+			)
 	username = models.CharField(
-		verbose_name='Псевдоним',
-		max_length=128,
-		unique=True,
-	)
+			verbose_name='Псевдоним',
+			max_length=128,
+			unique=True,
+			)
 	firstname = models.CharField(
-		verbose_name='Имя',
-		max_length=128,
-		blank=True,
-	)
+			verbose_name='Имя',
+			max_length=128,
+			blank=True,
+			)
 	lastname = models.CharField(
-		verbose_name='Фамилия',
-		max_length=128,
-		blank=True,
-	)
+			verbose_name='Фамилия',
+			max_length=128,
+			blank=True,
+			)
 	email = models.EmailField(
-		verbose_name='Эл. почта',
-		max_length=128,
-		unique=True,
-	)
+			verbose_name='Эл. почта',
+			max_length=128,
+			unique=True,
+			)
