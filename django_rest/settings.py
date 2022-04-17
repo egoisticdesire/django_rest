@@ -42,6 +42,7 @@ INSTALLED_APPS = [
         'corsheaders',
         'django_filters',
         'drf_yasg',
+        "graphene_django",
 
         # todo_apps
         'users_app',
@@ -159,6 +160,10 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
         "http://localhost:3000",
 ]
+
+GRAPHENE = {
+        "SCHEMA": "django_rest.schema.schema"
+}
 
 SIMPLE_JWT = {
         'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),

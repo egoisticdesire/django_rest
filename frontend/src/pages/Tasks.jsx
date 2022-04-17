@@ -22,7 +22,7 @@ const ToDoList = ({tasks}) => {
             key: 'updated_at',
         },
         {
-            title: 'Done?',
+            title: 'Active',
             dataIndex: 'is_active',
             key: 'is_active',
         },
