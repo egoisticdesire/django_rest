@@ -1,0 +1,62 @@
+[
+  {
+    "username": "Vasilek",
+    "firstname": "Василий",   
+    "lastname": "Иванов",
+    "email": "vasivan@mail.ru"
+  },
+  {
+    "username": "Petruha",
+    "firstname": "Петр",   
+    "lastname": "Каменщиков",
+    "email": "petrkamen@mail.ru"
+  },
+  {
+    "username": "Karas",
+    "firstname": "Николай",   
+    "lastname": "Васильев",
+    "email": "nikola@mail.ru"
+  },
+  {
+    "username": "Mar",
+    "firstname": "Мария",   
+    "lastname": "Валенок",
+    "email": "valenok@mail.ru"
+  },
+  {
+    "username": "Slav",
+    "firstname": "Вячеслав",   
+    "lastname": "Куролесов",
+    "email": "kuroles@mail.ru"
+  },
+  {
+    "username": "Fedor",
+    "firstname": "Дядя",   
+    "lastname": "Федор",
+    "email": "pes_i_kot@mail.ru"
+  },
+  {
+    "username": "Matros",
+    "firstname": "Кот",   
+    "lastname": "Матроскин",
+    "email": "hvost@mail.ru"
+  },
+  {
+    "username": "Gromozdila",
+    "firstname": "Шура",   
+    "lastname": "Каретный",
+    "email": "pyhtachek@mail.ru"
+  },
+  {
+    "username": "Nor",
+    "firstname": "Чак",   
+    "lastname": "Норис",
+    "email": "kulak_iz_borody@mail.ru"
+  },
+  {
+    "username": "Zohan",
+    "firstname": "Сладкий",   
+    "lastname": "Бубалех",
+    "email": "discodisco@mail.ru"
+  }
+]

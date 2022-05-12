@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import {Table} from 'antd';
-import {BackBtn} from "../components/BackBtn";
+import {BackBtn} from "../components/Buttons";
 
 const columns = [
     {
@@ -29,16 +29,11 @@ const columns = [
         dataIndex: 'user',
         key: 'user',
     },
-    {
-        title: 'Active',
-        dataIndex: 'is_active',
-        key: 'is_active',
-    },
 ]
 
-const SingleToDo = ({tasks}) => {
+const SingleToDo = ({todos}) => {
     const {title} = useParams()
-    const filtered_items = tasks.filter((item) => item.title === title)
+    const filtered_items = todos.filter((item) => item.title === title)
 
     return (
         <>
@@ -56,23 +51,23 @@ const SingleToDo = ({tasks}) => {
 }
 
 
-// const ToDoItem = ({task}) => {
+// const ToDoItem = ({todo}) => {
 //     return (
 //         <tr>
-//             <td>{task.project}</td>
-//             <td>{task.title}</td>
-//             <td>{task.body}</td>
-//             <td>{task.created_at}</td>
-//             <td>{task.updated_at}</td>
-//             <td>{task.user}</td>
-//             <td>{task.is_active}</td>
+//             <td>{todo.project}</td>
+//             <td>{todo.title}</td>
+//             <td>{todo.body}</td>
+//             <td>{todo.created_at}</td>
+//             <td>{todo.updated_at}</td>
+//             <td>{todo.user}</td>
+//             <td>{todo.is_active}</td>
 //         </tr>
 //     )
 // }
 //
-// const SingleToDo = ({tasks}) => {
+// const SingleToDo = ({todos}) => {
 //     const {title} = useParams();
-//     const filtered_items = tasks.filter((item) => item.title === title);
+//     const filtered_items = todos.filter((item) => item.title === title);
 //     return (
 //         <table>
 //             <thead>
@@ -87,7 +82,7 @@ const SingleToDo = ({tasks}) => {
 //             </tr>
 //             </thead>
 //             <tbody>
-//             {filtered_items.map((item) => <ToDoItem task={item}/>)}
+//             {filtered_items.map((item) => <ToDoItem todo={item}/>)}
 //             </tbody>
 //         </table>
 //     )
