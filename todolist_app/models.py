@@ -5,7 +5,7 @@ from users_app.models import User
 
 class Project(models.Model):
 	title = models.CharField(
-		verbose_name='Название',
+		verbose_name='Название проекта',
 		max_length=128,
 	)
 	link = models.URLField(
@@ -15,7 +15,7 @@ class Project(models.Model):
 	)
 	users = models.ManyToManyField(
 		User,
-		verbose_name='Пользователи',
+		verbose_name='Участники проекта',
 	)
 
 	def __str__(self):
@@ -25,7 +25,13 @@ class Project(models.Model):
 class ToDo(models.Model):
 	project = models.OneToOneField(
 		Project,
+		verbose_name='Проект',
 		on_delete=models.CASCADE,
+	)
+	title = models.CharField(
+		verbose_name='Название заметки',
+		max_length=128,
+		default='Заголовок заметки'
 	)
 	body = models.CharField(
 		verbose_name='Текст заметки',
@@ -40,8 +46,14 @@ class ToDo(models.Model):
 		verbose_name='Дата обновления',
 		auto_now=True,
 	)
+	user = models.OneToOneField(
+		User,
+		verbose_name='Создатель заметки',
+		on_delete=models.PROTECT,
+		null=True,
+	)
 	is_active = models.BooleanField(
-		verbose_name='Активен',
+		verbose_name='Активна/Не активна',
 		default=True,
 	)
 
