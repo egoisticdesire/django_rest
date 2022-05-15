@@ -4,6 +4,13 @@ from users_app.models import User
 
 
 class Project(models.Model):
+	class Meta:
+		verbose_name = 'Проект'
+		verbose_name_plural = 'Проекты'
+
+	def __str__(self):
+		return self.title
+
 	title = models.CharField(
 		verbose_name='Название проекта',
 		max_length=128,
@@ -18,11 +25,15 @@ class Project(models.Model):
 		verbose_name='Участники проекта',
 	)
 
+
+class ToDo(models.Model):
+	class Meta:
+		verbose_name = 'Заметка'
+		verbose_name_plural = 'Заметки'
+
 	def __str__(self):
 		return self.title
 
-
-class ToDo(models.Model):
 	project = models.OneToOneField(
 		Project,
 		verbose_name='Проект',
@@ -56,6 +67,3 @@ class ToDo(models.Model):
 		verbose_name='Активна/Не активна',
 		default=True,
 	)
-
-	def __str__(self):
-		return self.project

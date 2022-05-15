@@ -2,14 +2,17 @@ import React from 'react';
 import axios from 'axios';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {Homepage} from "./pages/Home";
-import {UsersList} from './pages/User';
+import {UsersList} from './pages/Users';
 import {ProjectsList} from './pages/Projects';
 import {ToDoList} from './pages/Tasks';
 import {NotFoundPage} from "./pages/NotFound";
 import {SingleUser} from "./pages/SingleUser";
-import {Layout} from './components/Layout'
+import {LayoutRoute} from './components/Layout'
 import {SingleProject} from "./pages/SingleProject";
 import {SingleToDo} from "./pages/SingleTask";
+
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.dark.css';
 
 const localhost = 'http://127.0.0.1:8000/api';
 
@@ -61,7 +64,7 @@ class App extends React.Component {
             <>
                 <BrowserRouter>
                     <Routes>
-                        <Route path='/' element={<Layout/>}>
+                        <Route path='/' element={<LayoutRoute/>}>
                             <Route index element={<Homepage/>}/>
                             <Route path='*' element={<NotFoundPage/>}/>
                             <Route path='users' element={<UsersList users={this.state.users}/>}/>

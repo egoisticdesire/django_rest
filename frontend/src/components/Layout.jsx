@@ -1,37 +1,75 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {NavLink, Outlet, useNavigate} from "react-router-dom";
 import {
     Button,
+    Col,
+    Row,
     Divider,
-    Form,
-    Input,
-    Checkbox,
+    Layout,
 } from 'antd';
-import {UserOutlined, LockOutlined} from '@ant-design/icons';
-import 'antd/dist/antd.css';
+import {RegisterDrawerForm} from "./RegisterDrawer";
+import {LoginDrawerForm} from "./LoginDrawer";
 
-const Layout = () => {
-    const navigate = useNavigate();
-    const goBack = () => navigate(-1);
 
+const LayoutRoute = () => {
+    const {Header, Footer, Content} = Layout;
     return (
         <>
-            <header>
-                <NavLink to='/'>home</NavLink>
-                <NavLink to='/users'>users</NavLink>
-                <NavLink to='/projects'>projects</NavLink>
-                <NavLink to='/tasks'>todolist</NavLink>
-            </header>
-            <main className='container'>
+            <Layout>
+                <Row>
+                    <Col span={24}>
+                        <Header
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <NavLink style={{margin: '0 20px'}} to='/'>
+                                <Button type="dashed" shape='round'>home</Button>
+                            </NavLink>
+                            <NavLink style={{margin: '0 20px'}} to='/users'>
+                                <Button type="dashed" shape='round'>users</Button>
+                            </NavLink>
+                            <NavLink style={{margin: '0 20px'}} to='/projects'>
+                                <Button type="dashed" shape='round'>projects</Button>
+                            </NavLink>
+                            <NavLink style={{margin: '0 20px'}} to='/tasks'>
+                                <Button type="dashed" shape='round'>todolist</Button>
+                            </NavLink>
+                        </Header>
+                    </Col>
+                </Row>
 
-                <Divider/>
-                <Button ghost block onClick={goBack}>back</Button>
-                <Divider/>
-                <Outlet/>
+                <Row>
+                    <Col
+                        xs={{span: 24}}
+                        lg={{span: 16, offset: 4}}
+                    >
+                        <Content>
+                            <RegisterDrawerForm/>
+                            <LoginDrawerForm/>
+                            <Outlet/>
+                            <Divider/>
+                        </Content>
+                    </Col>
+                </Row>
 
-            </main>
+                <Row>
+                    <Col span={24}>
+                        <Footer
+                            style={{
+                                // backgroundColor: '#1f1f1f',
+                                textAlign: 'center',
+                            }}
+                        >
+                            &copy;2022
+                        </Footer>
+                    </Col>
+                </Row>
+            </Layout>
         </>
     );
 }
 
-export {Layout};
+export {LayoutRoute};

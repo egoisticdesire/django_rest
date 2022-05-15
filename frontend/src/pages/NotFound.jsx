@@ -1,10 +1,15 @@
 import {Link} from "react-router-dom";
+import React from "react";
+import {BackBtn} from "../components/BackBtn";
 
 const NotFoundPage = () => {
     return (
-        <div>
-            This page doesn't exist. Go <Link to='/'>Home</Link>.
-        </div>
+        <>
+            <BackBtn/>
+            <div>
+                This page doesn't exist. Go <Link to='/'>Home</Link>.
+            </div>
+        </>
     )
 }
 
