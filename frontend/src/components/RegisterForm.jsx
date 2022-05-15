@@ -1,15 +1,5 @@
 import React, {useState} from 'react';
-import {
-    Form,
-    Input,
-    InputNumber,
-    Select,
-    Row,
-    Col,
-    Checkbox,
-    Button,
-    AutoComplete,
-} from 'antd';
+import {Form, Input, Select, Checkbox, Button, AutoComplete} from 'antd';
 
 const {Option} = Select;
 

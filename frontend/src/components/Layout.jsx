@@ -1,75 +1,94 @@
 import React from "react";
-import {NavLink, Outlet, useNavigate} from "react-router-dom";
-import {
-    Button,
-    Col,
-    Row,
-    Divider,
-    Layout,
-} from 'antd';
+import {Link, Outlet, useNavigate} from "react-router-dom";
+import {Col, Row, Divider, Layout, Menu, PageHeader, Button, Space,} from 'antd';
 import {RegisterDrawerForm} from "./RegisterDrawer";
 import {LoginDrawerForm} from "./LoginDrawer";
+import Text from "antd/es/typography/Text";
+import {
+    FundProjectionScreenOutlined, HomeOutlined, LoginOutlined, LogoutOutlined, SnippetsOutlined, UserOutlined
+} from "@ant-design/icons";
+import {message} from 'antd';
 
 
-const LayoutRoute = () => {
-    const {Header, Footer, Content} = Layout;
-    return (
-        <>
-            <Layout>
-                <Row>
-                    <Col span={24}>
-                        <Header
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <NavLink style={{margin: '0 20px'}} to='/'>
-                                <Button type="dashed" shape='round'>home</Button>
-                            </NavLink>
-                            <NavLink style={{margin: '0 20px'}} to='/users'>
-                                <Button type="dashed" shape='round'>users</Button>
-                            </NavLink>
-                            <NavLink style={{margin: '0 20px'}} to='/projects'>
-                                <Button type="dashed" shape='round'>projects</Button>
-                            </NavLink>
-                            <NavLink style={{margin: '0 20px'}} to='/tasks'>
-                                <Button type="dashed" shape='round'>todolist</Button>
-                            </NavLink>
-                        </Header>
-                    </Col>
-                </Row>
+const LayoutRoute = (props) => {
+    const {Footer, Content} = Layout;
+    const navigate = useNavigate();
+    return (<>
+        <Layout>
+            <Row>
+                <Col xs={24}>
 
-                <Row>
-                    <Col
-                        xs={{span: 24}}
-                        lg={{span: 16, offset: 4}}
+                    <Menu
+                        style={{display: 'flex', justifyContent: 'center'}}
+                        mode="horizontal"
                     >
-                        <Content>
-                            <RegisterDrawerForm/>
-                            <LoginDrawerForm/>
-                            <Outlet/>
-                            <Divider/>
-                        </Content>
-                    </Col>
-                </Row>
+                        <Menu.Item key="main" icon={<HomeOutlined/>}>
+                            <Link to='/'>Главная</Link>
+                        </Menu.Item>
+                        <Menu.Item key="projects" icon={<FundProjectionScreenOutlined/>}>
+                            <Link to='/projects'>Проекты</Link>
+                        </Menu.Item>
+                        <Menu.Item key="tasks" icon={<SnippetsOutlined/>}>
+                            <Link to='/tasks'>Заметки</Link>
+                        </Menu.Item>
+                        <Menu.Item key="users" icon={<UserOutlined/>}>
+                            <Link to='/users'>Пользователи</Link>
+                        </Menu.Item>
+                    </Menu>
+                    <PageHeader style={{float: 'right'}}>
+                        <Space>
+                            {props.isAuthenticated() ?
+                                <Button type="ghost" shape="dashed" icon={<LogoutOutlined/>}
+                                        onClick={() => {
+                                            props.logout()
+                                            navigate('/')
+                                            message.info({
+                                                content: 'Вы вышли из учетной записи!',
+                                                duration: '3',
+                                                className: 'custom-class',
+                                                style: {
+                                                    marginTop: '2.5%',
+                                                    textAlign: 'right',
+                                                }
+                                            })
+                                        }}>Выйти
+                                </Button> :
+                                <Button type="ghost" shape="dashed" icon={<LoginOutlined/>}
+                                        onClick={() => navigate('/auth')}>
+                                    Войти
+                                </Button>}
+                        </Space>
+                    </PageHeader>
+                </Col>
+            </Row>
 
-                <Row>
-                    <Col span={24}>
-                        <Footer
-                            style={{
-                                // backgroundColor: '#1f1f1f',
-                                textAlign: 'center',
-                            }}
-                        >
-                            &copy;2022
-                        </Footer>
-                    </Col>
-                </Row>
-            </Layout>
-        </>
-    );
+            <Row>
+                <Col
+                    xs={{span: 24}}
+                    lg={{span: 14, offset: 5}}
+                >
+                    <Content>
+                        {/*<RegisterDrawerForm/>*/}
+                        {/*<LoginDrawerForm/>*/}
+                        <Outlet/>
+                        <Divider/>
+                    </Content>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col span={24}>
+                    <Footer>
+                        <Divider/>
+                        <Text>
+                            <center>&copy;2022</center>
+                        </Text>
+                    </Footer>
+                </Col>
+            </Row>
+        </Layout>
+    </>);
 }
+
 
 export {LayoutRoute};
