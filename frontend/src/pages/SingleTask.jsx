@@ -30,7 +30,7 @@ const columns = [
         key: 'user',
     },
     {
-        title: 'Done?',
+        title: 'Active',
         dataIndex: 'is_active',
         key: 'is_active',
     },
