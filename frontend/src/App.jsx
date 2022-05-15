@@ -85,7 +85,7 @@ class App extends React.Component {
             this.setState({users: []})
         });
 
-        axios.get(`${localhost}/project/`, {headers})
+        axios.get(`${localhost}/projects/`, {headers})
             .then(response => {
                 this.setState({'projects': response.data.results,})
             }).catch(error => {
@@ -93,7 +93,7 @@ class App extends React.Component {
             this.setState({projects: []})
         });
 
-        axios.get(`${localhost}/todo/`, {headers})
+        axios.get(`${localhost}/todos/`, {headers})
             .then(response => {
                 this.setState({'tasks': response.data.results,})
             }).catch(error => {

@@ -6,7 +6,8 @@ from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from .models import Project, ToDo
-from .serializers import ProjectModelSerializer, ToDoModelSerializer
+from .serializers import ProjectModelSerializer, ProjectModelSerializerBase, ToDoModelSerializer, \
+	ToDoModelSerializerBase
 
 
 class ProjectPagination(PageNumberPagination):
@@ -30,6 +31,11 @@ class ProjectModelViewSet(ModelViewSet):
 	search_fields = ('title',)
 	pagination_class = ProjectPagination
 
+	def get_serializer_class(self):
+		if self.request.method in ['GET']:
+			return ProjectModelSerializer
+		return ProjectModelSerializerBase
+
 
 class ToDoModelViewSet(ModelViewSet):
 	queryset = ToDo.objects.all()
@@ -43,3 +49,8 @@ class ToDoModelViewSet(ModelViewSet):
 		todo.is_active = False
 		todo.save()
 		return Response(status=status.HTTP_200_OK)
+
+	def get_serializer_class(self):
+		if self.request.method in ['GET']:
+			return ToDoModelSerializer
+		return ToDoModelSerializerBase

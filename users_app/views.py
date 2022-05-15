@@ -17,6 +17,6 @@ class UserCustomViewSet(mixins.ListModelMixin,
 	# authentication_classes = (JWTAuthentication,)
 
 
-# class UserModelViewSet(ModelViewSet):
-# 	queryset = User.objects.all()
-# 	serializer_class = UserModelSerializer
+class UserModelViewSet(ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserModelSerializer

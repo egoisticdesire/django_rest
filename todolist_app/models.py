@@ -12,18 +12,18 @@ class Project(models.Model):
 		return self.title
 
 	title = models.CharField(
-		verbose_name='Название проекта',
-		max_length=128,
-	)
+			verbose_name='Название проекта',
+			max_length=128,
+			)
 	link = models.URLField(
-		verbose_name='Ссылка на репозиторий',
-		max_length=1024,
-		blank=True,
-	)
+			verbose_name='Ссылка на репозиторий',
+			max_length=1024,
+			blank=True,
+			)
 	users = models.ManyToManyField(
-		User,
-		verbose_name='Участники проекта',
-	)
+			User,
+			verbose_name='Участники проекта',
+			)
 
 
 class ToDo(models.Model):
@@ -35,35 +35,35 @@ class ToDo(models.Model):
 		return self.title
 
 	project = models.OneToOneField(
-		Project,
-		verbose_name='Проект',
-		on_delete=models.CASCADE,
-	)
+			Project,
+			verbose_name='Проект',
+			on_delete=models.CASCADE,
+			)
 	title = models.CharField(
-		verbose_name='Название заметки',
-		max_length=128,
-		default='Заголовок заметки'
-	)
+			verbose_name='Название заметки',
+			max_length=128,
+			default='Заголовок заметки',
+			)
 	body = models.CharField(
-		verbose_name='Текст заметки',
-		max_length=1024,
-		blank=True,
-	)
+			verbose_name='Текст заметки',
+			max_length=1024,
+			blank=True,
+			)
 	created_at = models.DateTimeField(
-		verbose_name='Дата создания',
-		auto_now_add=True,
-	)
+			verbose_name='Дата создания',
+			auto_now_add=True,
+			)
 	updated_at = models.DateTimeField(
-		verbose_name='Дата обновления',
-		auto_now=True,
-	)
+			verbose_name='Дата обновления',
+			auto_now=True,
+			)
 	user = models.OneToOneField(
-		User,
-		verbose_name='Создатель заметки',
-		on_delete=models.PROTECT,
-		null=True,
-	)
+			User,
+			verbose_name='Создатель заметки',
+			on_delete=models.PROTECT,
+			null=True,
+			)
 	is_active = models.BooleanField(
-		verbose_name='Активна/Не активна',
-		default=True,
-	)
+			verbose_name='Активна/Не активна',
+			default=True,
+			)
